@@ -19,18 +19,18 @@ public class GestionStockkApplication {
 		ApplicationContext ctx = SpringApplication.run(GestionStockkApplication.class, args);
 		ProduitRepository produitRepository = ctx.getBean(ProduitRepository.class);
 		
-		Page<Produit> prod1 = produitRepository.findAll(PageRequest.of(0, 5));
-		prod1.forEach(p->System.out.println("Nom du produit est : " + p.getNom()));
+		//Page<Produit> prod1 = produitRepository.findAll(PageRequest.of(0, 5));
+		//prod1.forEach(p->System.out.println("Nom du produit est : " + p.getNom()));
 		
-		System.out.println();
+		//System.out.println();
 		
-		Page<Produit> prod2 = produitRepository.chercherProduits("%C%", PageRequest.of(0, 5));
+		Page<Produit> prod2 = produitRepository.chercherProduits("%ord%", PageRequest.of(0, 5));
 		prod2.forEach(p->System.out.println("Nom du produit est : " + p.getNom()));
 		
-		System.out.println();
+		/*System.out.println();
 		
 		List<Produit> list = produitRepository.findByNom("Chaise");
-		list.forEach(p->System.out.println(" ====> " + p.getNom()));
+		list.forEach(p->System.out.println(" ====> " + p.getNom()));*/
 				
 		//produitRepository.save(new Produit("Table", 150, "photo"));
 		//produitRepository.save(new Produit("Chaise", 40, "photo"));

@@ -10,6 +10,15 @@
 </head>
 <body>
     <div class="container">
+        <form th:action="@{index}" method="get">
+            <div class="form-group">
+                <label>Mot clé</label>
+                <input type="text" name="motCle" th:value="${motCle}">
+                <button type="submit">Chercher</button>
+            </div>
+        </form>
+    </div>
+    <div class="container">
         <h1>Liste des produits</h1>
         <table class="table table-striped">
             <thead>
@@ -18,13 +27,23 @@
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="p:${produits}">
+                <tr th:each="p:${pageProduits.content}">
                     <td th:text="${p.id}"></td>
                     <td th:text="${p.nom}"></td>
                     <td th:text="${p.prix}"></td>
                 </tr>
             </tbody>
         </table>
+    </div>
+    <div class="container">
+        <ul class="nav nav-pills">
+            <li th:each="p:${pages}" class="nav-item">
+                <a th:text="${p}+1" class="nav-link" th:classappend="${p==pageCourante} ? 'active' : ''" th:href="@{index(page=${p}, motCle=${motCle})}"></a>
+            </li>
+        </ul>
+        <!-- <h2 th:text="${pagesCount}"></h2> -->
+        <!-- <h2 th:text="${p}"></h2> -->
+        <!-- <h2 th:text="${test}"></h2> -->
     </div>
     
 </body>
