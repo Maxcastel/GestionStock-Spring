@@ -6,6 +6,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "produit")
@@ -16,6 +18,8 @@ public class Produit {
     private int id;
     
     @Column
+    @NotEmpty
+    @Size(min=5, max=50)
     private String nom;
 
     @Column
