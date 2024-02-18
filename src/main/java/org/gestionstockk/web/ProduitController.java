@@ -11,12 +11,13 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import jakarta.validation.Valid;
+//import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping(path="/produit")
@@ -58,7 +59,7 @@ public class ProduitController {
 	}
 
 	@RequestMapping(path="/enregistrerProduit", method=RequestMethod.POST)
-	public String enregistrerProduit(@Valid Produit pd, BindingResult bindBindingResult, @RequestParam(name="picture") MultipartFile file) throws Exception {
+	public String enregistrerProduit(@Validated Produit pd, BindingResult bindBindingResult, @RequestParam(name="picture") MultipartFile file) throws Exception {
 		
 		if(bindBindingResult.hasErrors()) {
 			return "formProduit";
